@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Log in | Password Security Lab{% endblock %}
+{% block content %}
+<section class="form-card compact">
+  <div class="eyebrow">AUTHENTICATION</div>
+  <h1>Welcome back</h1>
+  <p class="muted">Sign in with your demo account.</p>
+  <form method="post" class="auth-form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <label for="username">Username</label>
+    <input id="username" name="username" type="text" autocomplete="username" required>
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" autocomplete="current-password" required>
+    <button class="button primary full" type="submit">Log in</button>
+  </form>
+  <p class="form-foot">New here? <a href="{{ url_for('register') }}">Create a demo account</a></p>
+  <div class="small-note">Five consecutive failed attempts trigger a 10-minute temporary account lockout in this local demo.</div>
+</section>
+{% endblock %}

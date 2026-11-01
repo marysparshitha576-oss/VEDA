@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Home | Password Security Lab{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="eyebrow">CYBERSECURITY MINI PROJECT</div>
+  <h1>Password Security &amp;<br><span>Authentication Analysis</span></h1>
+  <p class="lead">A small educational application demonstrating secure password handling, authentication, account protection, and security logging.</p>
+  <div class="hero-actions">
+    <a class="button primary" href="{{ url_for('register') }}">Create a demo account</a>
+    <a class="button secondary" href="{{ url_for('login') }}">Log in</a>
+  </div>
+</section>
+<section class="feature-grid">
+  <article class="feature"><div class="feature-icon">🛡️</div><h3>Password hashing</h3><p>Stores password hashes instead of plaintext passwords.</p></article>
+  <article class="feature"><div class="feature-icon">📊</div><h3>Strength checker</h3><p>Checks a password against a basic educational policy.</p></article>
+  <article class="feature"><div class="feature-icon">🚦</div><h3>Login protection</h3><p>Tracks failed attempts and applies a temporary lockout.</p></article>
+  <article class="feature"><div class="feature-icon">🧾</div><h3>Security logging</h3><p>Records registration, login, lockout, and logout events.</p></article>
+</section>
+<div class="notice"><strong>Learning-lab notice:</strong> Use fictional usernames and passwords only. This project is for local learning, not production deployment.</div>
+{% endblock %}

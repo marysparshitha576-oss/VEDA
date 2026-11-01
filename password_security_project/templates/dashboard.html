@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard | Password Security Lab{% endblock %}
+{% block content %}
+<section class="dashboard-head">
+  <div class="eyebrow">AUTHENTICATED SESSION</div>
+  <h1>Hello, {{ current_username }} 👋</h1>
+  <p class="lead small-lead">Your demo account is logged in. This page shows recent authentication events recorded for your username.</p>
+</section>
+<section class="panel">
+  <div class="panel-heading"><div><div class="eyebrow">ACTIVITY LOG</div><h2>Recent security events</h2></div><span class="status-pill">Logging enabled</span></div>
+  {% if logs %}
+  <div class="table-wrap"><table><thead><tr><th>Time (UTC)</th><th>Event</th><th>Source IP</th><th>Details</th></tr></thead><tbody>
+    {% for item in logs %}<tr><td>{{ item.created_at }}</td><td><span class="event-tag">{{ item.event_type }}</span></td><td>{{ item.source_ip }}</td><td>{{ item.details }}</td></tr>{% endfor %}
+  </tbody></table></div>
+  {% else %}<p class="muted">No events recorded yet.</p>{% endif %}
+</section>
+<div class="notice"><strong>Security note:</strong> Password values are never written to the activity log. This demo records the event type, username, source IP, time, and a short explanation.</div>
+{% endblock %}

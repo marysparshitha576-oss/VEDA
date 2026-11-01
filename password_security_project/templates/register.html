@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Register | Password Security Lab{% endblock %}
+{% block content %}
+<section class="form-card">
+  <div class="eyebrow">NEW DEMO ACCOUNT</div>
+  <h1>Create an account</h1>
+  <p class="muted">Use a fictional account for this practice application.</p>
+  <form method="post" class="auth-form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <label for="username">Username</label>
+    <input id="username" name="username" type="text" minlength="3" maxlength="30" pattern="[A-Za-z0-9_]+" autocomplete="username" required placeholder="e.g. demo_user">
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" autocomplete="new-password" required placeholder="Create a demo password">
+    <div class="strength-track"><div id="strength-bar"></div></div>
+    <p id="strength-text" class="strength-text">Password strength: not checked</p>
+    <ul class="policy-list">
+      <li id="rule-length">At least 8 characters</li>
+      <li id="rule-lower">One lowercase letter</li>
+      <li id="rule-upper">One uppercase letter</li>
+      <li id="rule-number">One number</li>
+      <li id="rule-special">One special character</li>
+    </ul>
+    <label for="confirm_password">Confirm password</label>
+    <input id="confirm_password" name="confirm_password" type="password" autocomplete="new-password" required placeholder="Enter the password again">
+    <button class="button primary full" type="submit">Register</button>
+  </form>
+  <p class="form-foot">Already registered? <a href="{{ url_for('login') }}">Log in</a></p>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='password.js') }}"></script>{% endblock %}
